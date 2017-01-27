@@ -2,45 +2,6 @@
 #include<time.h>
 
 //Coded by Zaumdongwha
-int pusent3(int * cnum)
-{
-	int test;
-	srand(time(NULL));
-	*(cnum)=rand()%10;
-	test=rand()%10;
-	for(; test==*cnum; test=rand()%10);
-	*(cnum+1)=test;
-	for(; test==*(cnum+1); test=rand()%10);
-	*(cnum+2)=test;
-}
-int pusent4(int * cnum)
-{
-	int test;
-	srand(time(NULL));
-	*(cnum)=rand()%10;
-	test=rand()%10;
-	for(; test==*cnum; test=rand()%10);
-	*(cnum+1)=test;
-	for(; test==*(cnum+1) || test==*cnum; test=rand()%10);
-	*(cnum+2)=test;
-	for(; test==*(cnum+2) || test==*(cnum+1) || test==*cnum; test=rand()%10);
-	*(cnum+3)=test;
-}
-int pusent5(int * cnum)
-{
-	int test;
-	srand(time(NULL));
-	*(cnum)=rand()%10;
-	test=rand()%10;
-	for(; test==*cnum; test=rand()%10);
-	*(cnum+1)=test;
-	for(; test==*(cnum+1) || test==*cnum; test=rand()%10);
-	*(cnum+2)=test;
-	for(; test==*(cnum+2) || test==*(cnum+1) || test==*cnum; test=rand()%10);
-	*(cnum+3)=test;
-	for(; test==*(cnum+3) || test==*(cnum+2) || test==*(cnum+1) || test==*cnum; test=rand()%10);
-	*(cnum+4)=test;
-}
 int pusent(int number, int * cnum)
 {
 	int * arr=(int *)malloc(number * sizeof(int));
@@ -94,4 +55,13 @@ void baseball(int number, int * Computer, int * Player, int * pStrike, int * pBa
 	ball-=strike;
 	*pStrike=strike;
 	*pBall=ball;
+}
+
+int tenSquare(int num)		//10의 num승을 반환하는 함수; 
+{
+	int i, total=1;
+	for(i=0; i<num; ++i)
+		total*=10;
+	
+	return total;
 }
