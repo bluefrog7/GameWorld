@@ -12,15 +12,15 @@ int probability()
 
 //Coded by Bluefrog
 #include <string.h>
-int convert(char * arr)		//°¡À§´Â 1, ¹ÙÀ§´Â 2, º¸´Â 3, ´Ù¸¥ °Å´Â 0 ¹İÈ¯		
+int convert(char * arr)		//ê°€ìœ„ëŠ” 1, ë°”ìœ„ëŠ” 2, ë³´ëŠ” 3, ë‹¤ë¥¸ ê±°ëŠ” 0 ë°˜í™˜		
 {
-	if(!strcmp(arr, "°¡À§"))
+	if(!strcmp(arr, "ê°€ìœ„"))
 		return 1; 
 		
-	else if(!strcmp(arr, "¹ÙÀ§"))
+	else if(!strcmp(arr, "ë°”ìœ„"))
 		return 2;
 	
-	else if(!strcmp(arr, "º¸"))
+	else if(!strcmp(arr, "ë³´"))
 		return 3;
 	
 	else
@@ -28,7 +28,7 @@ int convert(char * arr)		//°¡À§´Â 1, ¹ÙÀ§´Â 2, º¸´Â 3, ´Ù¸¥ °Å´Â 0 ¹İÈ¯
 }
 
 //Coded by Bluefrog
-int judge(int Player, int Computer)		//À¯Àú°¡ ÀÌ±â¸é 1À» ¹İÈ¯, Áö¸é -1À» ¹İÈ¯, ¹«½ÂºÎ´Â 0À» ¹İÈ¯ 
+int judge(int Player, int Computer)		//ìœ ì €ê°€ ì´ê¸°ë©´ 1ì„ ë°˜í™˜, ì§€ë©´ -1ì„ ë°˜í™˜, ë¬´ìŠ¹ë¶€ëŠ” 0ì„ ë°˜í™˜ 
 {
 	if(Player == Computer)
 	{
