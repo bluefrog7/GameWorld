@@ -1,212 +1,105 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include<conio.h>
-#include"¼ıÀÚ¾ß±¸.h"
+#include"ìˆ«ìì•¼êµ¬.h"
 int main()
 {
-	int b,c;
+	int b,B,c;
 	while(1)
 	{
-		printf("¼ıÀÚ ¾ß±¸(Åõ¼ö°üÁ¡)%15s\n","Ver.1.0");
-		printf("°ÔÀÓ ·ê\n");
-		printf("1.¼ıÀÚ¸¸ ÀÏÄ¡ÇÒ°æ¿ì 1°³´ç 1º¼\n");
-		printf("2.¼ıÀÚ¿Í ÀÚ¸®°¡ ÀÏÄ¡ÇÒ°æ¿ì 1°³´ç 1½ºÆ®¶óÀÌÅ©\n");
-		printf("3.»ç¿ëÀÚ ¼ıÀÚ°¡ ÄÄÇ»ÅÍ ¼ıÀÚ¿Í ÀÏÄ¡ÇÏ¸é ³¡\n\n");
-		printf("%20s    %20s\n","1.½ÃÀÛ","2.Á¾·á");
+		int j=0, strike=0, ball=0, i=0, k;
+		int *num, *cnum;
+		printf("ìˆ«ì ì•¼êµ¬(íˆ¬ìˆ˜ê´€ì )%15s\n","Ver.1.0");
+		printf("ê²Œì„ ë£°\n");
+		printf("1.ìˆ«ìë§Œ ì¼ì¹˜í• ê²½ìš° 1ê°œë‹¹ 1ë³¼\n");
+		printf("2.ìˆ«ìì™€ ìë¦¬ê°€ ì¼ì¹˜í• ê²½ìš° 1ê°œë‹¹ 1ìŠ¤íŠ¸ë¼ì´í¬\n");
+		printf("3.ì‚¬ìš©ì ìˆ«ìê°€ ì»´í“¨í„° ìˆ«ìì™€ ì¼ì¹˜í•˜ë©´ ë\n\n");
+		printf("%20s    %20s\n","1.ì‹œì‘","2.ì¢…ë£Œ");
 		scanf("%d",&c);
 		if(c==1)
 		{
-			printf("¸îÀÚ¸® ¼ıÀÚ¸¦ ÇÏ½ÇÁö °ñ¶óÁÖ¼¼¿ä.(ÇöÀç±¸ÇöµÈ ¹öÀü:3,4,5)\n");
+			printf("ëª‡ìë¦¬ ìˆ«ìë¥¼ í•˜ì‹¤ì§€ ê³¨ë¼ì£¼ì„¸ìš”. (í˜„ì¬êµ¬í˜„ëœ ë²„ì „:3,4,5)\n");
 			printf("-->");
 			scanf("%d",&b);
-			if(b==3)
+			num=(int *)malloc(b*sizeof(int));
+			cnum=(int *)malloc(b*sizeof(int));
+			if(b<3 || 5<b)
 			{
-				int num[3],cnum[3],j,strike,ball,i;
-				printf("¡ØÁÖÀÇ»çÇ×¡Ø\n");
-				printf("¹«Á¶°Ç ¼ıÀÚ 3°³¸¸ ÀÔ·ÂÇØÁÖ¼¼¿ä.\n\n");
-				pusent3(cnum);
-				for(i=0; i<20; i++)
-				{
-					printf("%d¹øÂ° ÅÏ\n",i+1);
-					printf("-->");
-					scanf("%d",&j);
-					if(j<0 || j>999)
-					{
-						printf("Àß¸ø ÀÔ·ÂÇÏ¼Ì½À´Ï´Ù. »ç¿ëÀÚÀÇ ¼ıÀÚ´Â ·£´ıÀ¸·Î Á¤ÇÏ°Ú½À´Ï´Ù.\n");
-						pusent3(num);
-						printf("·£´ıÀ¸·Î ÁöÁ¤µÈ¼ö: ");
-						printf("%d",num[0]);
-						printf("%d",num[1]);
-						printf("%d\n",num[2]);
-					}
-					else
-					{
-						num[0]=j/100;
-						j-=num[0]*100;
-						num[1]=j/10;
-						j-=num[1]*10;
-						num[2]=j;
-					}
-					baseball(3,cnum,num,&strike,&ball);
-					if(strike==3)
-					{
-						printf("out\n");
-						printf("ÄÄÇ»ÅÍ ¼ıÀÚ: ");
-						printf("%d",cnum[0]);	
-						printf("%d",cnum[1]);	
-						printf("%d\n",cnum[2]);	
-						system("pause");
-						return 0;
-					}
-					else
-					{
-						printf("%d strike\n",strike);
-						printf("%d ball\n\n",ball);
-					}
-				}
-				printf("ÄÄÇ»ÅÍ ¼ıÀÚ: ");
-				printf("%d",cnum[0]);	
-				printf("%d",cnum[1]);	
-				printf("%d\n",cnum[2]);	
-				system("pause");
-				system("cls");		
-			}
-			else if(b==4) 
-			{
-				int num[4],cnum[4],j,strike,ball,i;
-				printf("¡ØÁÖÀÇ»çÇ×¡Ø\n");
-				printf("¹«Á¶°Ç ¼ıÀÚ 4°³¸¸ ÀÔ·ÂÇØÁÖ¼¼¿ä.\n\n");
-				pusent4(cnum);
-				for(i=0; i<20; i++)
-				{
-					printf("%d¹øÂ° ÅÏ\n",i+1);
-					printf("-->");
-					scanf("%d",&j);
-					if(j<0 || j>9999)
-					{
-						printf("Àß¸ø ÀÔ·ÂÇÏ¼Ì½À´Ï´Ù. »ç¿ëÀÚÀÇ ¼ıÀÚ´Â ·£´ıÀ¸·Î Á¤ÇÏ°Ú½À´Ï´Ù.\n");
-						pusent4(num);
-						printf("·£´ıÀ¸·Î ÁöÁ¤µÈ¼ö: ");
-						printf("%d",num[0]);
-						printf("%d",num[1]);
-						printf("%d",num[2]);
-						printf("%d\n",num[3]);
-					}
-					else
-					{
-						num[0]=j/1000;
-						j-=num[0]*1000;
-						num[1]=j/100;
-						j-=num[1]*100;
-						num[2]=j/10;
-						j-=num[2]*10;
-						num[3]=j;
-					}
-					baseball(4,cnum,num,&strike,&ball);
-					if(strike==4)
-					{
-						printf("out\n");
-						printf("ÄÄÇ»ÅÍ ¼ıÀÚ: ");
-						printf("%d",cnum[0]);	
-						printf("%d",cnum[1]);	
-						printf("%d",cnum[2]);	
-						printf("%d\n",cnum[3]);	
-						system("pause");
-						return 0;
-					}
-					else
-					{
-						printf("%d strike\n",strike);
-						printf("%d ball\n\n",ball);
-					}
-				}	
-				printf("ÄÄÇ»ÅÍ ¼ıÀÚ: ");
-				printf("%d",cnum[0]);	
-				printf("%d",cnum[1]);	
-				printf("%d",cnum[2]);	
-				printf("%d\n",cnum[3]);	
-				system("pause");
-				system("cls");	
-			}
-			else if(b==5)
-			{
-				int num[5],cnum[5],j,strike,ball,i;
-				printf("¡ØÁÖÀÇ»çÇ×¡Ø\n");
-				printf("¹«Á¶°Ç ¼ıÀÚ 5°³¸¸ ÀÔ·ÂÇØÁÖ¼¼¿ä.\n\n");
-				pusent5(cnum);
-				for(i=0; i<20; i++)
-				{
-					printf("%d¹øÂ° ÅÏ\n",i+1);
-					printf("-->");
-					scanf("%d",&j);
-					if(j<0 || j>99999)
-					{
-						printf("Àß¸ø ÀÔ·ÂÇÏ¼Ì½À´Ï´Ù. »ç¿ëÀÚÀÇ ¼ıÀÚ´Â ·£´ıÀ¸·Î Á¤ÇÏ°Ú½À´Ï´Ù.\n");
-						pusent5(num);
-						printf("·£´ıÀ¸·Î ÁöÁ¤µÈ¼ö: ");
-						printf("%d",num[0]);
-						printf("%d",num[1]);
-						printf("%d",num[2]);
-						printf("%d",num[3]);
-						printf("%d\n",num[4]);
-					}
-					else
-					{
-						num[0]=j/10000;
-						j-=num[0]*10000;
-						num[1]=j/1000;
-						j-=num[1]*1000;
-						num[2]=j/100;
-						j-=num[2]*100;
-						num[3]=j/10;
-						j-=num[3]*10;
-						num[4]=j;
-					}
-					baseball(5,cnum,num,&strike,&ball);
-					if(strike==5)
-					{
-						printf("out\n");
-						printf("ÄÄÇ»ÅÍ ¼ıÀÚ: ");
-						printf("%d",cnum[0]);	
-						printf("%d",cnum[1]);	
-						printf("%d",cnum[2]);	
-						printf("%d",cnum[3]);	
-						printf("%d\n",cnum[4]);	
-						system("pause");
-						return 0;
-					}
-					else
-					{
-						printf("%d strike\n",strike);
-						printf("%d ball\n\n",ball);
-					}
-				}
-				printf("ÄÄÇ»ÅÍ ¼ıÀÚ: ");
-				printf("%d",cnum[0]);	
-				printf("%d",cnum[1]);	
-				printf("%d",cnum[2]);	
-				printf("%d",cnum[3]);	
-				printf("%d\n",cnum[4]);	
-				system("pause");
-				system("cls");				
-			}
-			else
-			{
-				printf("¾ÆÁ÷ ±¸ÇöµÇÁö ¾ÊÀº ¹öÀüÀÔ´Ï´Ù.\n");
+				printf("ì•„ì§ êµ¬í˜„ë˜ì§€ ì•Šì€ ë²„ì „ì…ë‹ˆë‹¤.\n");
 				Sleep(2000);
 				system("cls");
-				continue;
-			}	
-		}	
+			}
+			
+			else
+			{
+				printf("â€»ì£¼ì˜ì‚¬í•­â€»\n");
+				printf("ë¬´ì¡°ê±´ ìˆ«ì %dê°œë§Œ ì…ë ¥í•´ì£¼ì„¸ìš”.\n\n", b);
+				pusent(b,cnum);
+				for(i=0; i<20; i++)
+				{
+					printf("%dë²ˆì§¸ í„´\n",i+1);
+					printf("-->");
+					scanf("%d",&j);
+					if(j<0 || j>=tenSquare(b))
+					{
+						printf("ì˜ëª» ì…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤. ì‚¬ìš©ìì˜ ìˆ«ìëŠ” ëœë¤ìœ¼ë¡œ ì •í•˜ê² ìŠµë‹ˆë‹¤.\n");
+						pusent(b,num);
+						printf("ëœë¤ìœ¼ë¡œ ì§€ì •ëœìˆ˜: ");
+						for(k=0; k<b; ++k)
+							printf("%d",num[k]);
+							
+						printf("\n");
+					}
+					else
+					{
+						B=b;
+						for(k=0; k<(b-1); ++k)
+						{
+							num[k]=j/tenSquare(B-1);
+							j-=num[k]*tenSquare(B-1);
+							B--;
+						}
+						num[b-1]=j;
+					}
+					baseball(b,cnum,num,&strike,&ball);
+					if(strike==b)
+					{
+						printf("out\n");
+						printf("ì»´í“¨í„° ìˆ«ì: ");
+						for(k=0; k<b; ++k)
+							printf("%d",cnum[k]);
+						
+						printf("\n");
+						free(cnum);
+						free(num);
+						system("pause");
+						return 0;
+					}
+					else
+					{
+						printf("%d strike\n",strike);
+						printf("%d ball\n\n",ball);
+					}
+				}
+				printf("ì»´í“¨í„° ìˆ«ì: ");
+				for(k=0; k<b; ++k)
+					printf("%d",cnum[k]);
+				
+				printf("\n");
+				free(cnum);
+				free(num);
+				system("pause");
+				system("cls");
+			}
+		}
 		else if(c==2)
 		{
-			printf("ÇÁ·Î±×·¥À» Á¾·áÇÕ´Ï´Ù.\n");
+			printf("í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œí•©ë‹ˆë‹¤.\n");
 			Sleep(2000);
 			return 0;
 		}
 		else
 		{
-			printf("Àß¸øÀÔ·ÂÇÏ¼Ì½À´Ï´Ù. ´Ù½ÃÀÔ·ÂÇØÁÖ¼¼¿ä.\n");
+			printf("ì˜ëª»ì…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤. ë‹¤ì‹œì…ë ¥í•´ì£¼ì„¸ìš”.\n");
 			Sleep(1500);
 			system("cls");
 		}
